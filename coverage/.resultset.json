@@ -1,11 +1,13 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/models/customer.rb": {
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/models/merchant.rb": {
         "lines": [
           1,
           1,
           null,
+          1,
+          1,
           1,
           null,
           null
@@ -15,6 +17,29 @@
         "lines": [
           1,
           1,
+          null
+        ]
+      },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/models/item.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/models/customer.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
           null
         ]
       },
@@ -44,36 +69,28 @@
           null
         ]
       },
-      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/models/item.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/models/merchant.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
       "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/models/transaction.rb": {
         "lines": [
           1,
           1,
           1,
+          1,
+          null
+        ]
+      },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/api/v1/merchants_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/application_controller.rb": {
+        "lines": [
           1,
           null
         ]
@@ -89,14 +106,6 @@
         }
       },
       "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/jobs/application_job.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/application_controller.rb": {
         "lines": [
           0,
           0
@@ -125,6 +134,6 @@
         }
       }
     },
-    "timestamp": 1666051975
+    "timestamp": 1666096717
   }
 }
