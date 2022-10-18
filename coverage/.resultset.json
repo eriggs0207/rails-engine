@@ -88,6 +88,7 @@
           null,
           1,
           1,
+          1,
           null,
           null,
           null
@@ -95,6 +96,24 @@
       },
       "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/application_controller.rb": {
         "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/serializers/merchant_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/serializers/item_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
           1,
           null
         ]
@@ -138,6 +157,6 @@
         }
       }
     },
-    "timestamp": 1666097283
+    "timestamp": 1666117569
   }
 }
