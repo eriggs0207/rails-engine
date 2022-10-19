@@ -53,14 +53,14 @@ describe "Merchants API" do
     merchant5 = create(:merchant, name: "ZZZZZZ")
 
     get "/api/v1/merchants/find?name=jim"
-     
+
     expect(response).to be_successful
     expect(response.status).to eq(200)
 
     json_response = JSON.parse(response.body, symbolize_names: true)
     merchant = json_response[:data]
 
-    expect(merchant).to be_an(Array)
+    expect(merchant).to be_an(Hash)
     expect(merchant).to have_key(:attributes)
     expect(merchant[:attributes]).to have_key(:name)
     expect(merchant[:attributes][:name]).to be_a(String)

@@ -17,7 +17,7 @@ RSpec.describe Merchant, type: :model do
         merchant2 = create(:merchant, name: "Greater Merchant")
         merchant3 = create(:merchant, name: "Greatest Merchant")
 
-        expect(Merchant.merchant_search("greatest")).to eq(merchant3)
+        expect(Merchant.merchant_search("gReatEst")).to eq(merchant3)
       end
     end
   end
