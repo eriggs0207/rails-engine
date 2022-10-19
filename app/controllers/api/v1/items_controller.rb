@@ -6,13 +6,26 @@ class Api::V1::ItemsController < ApplicationController
 
   def show
     item = Item.find(params[:id])
-    render json: ItemSerializer.new(item)
+    if item.present?
+      render json: ItemSerializer.new(item)
+    else
+      render status: :no_content
+    end
   end
 
   def create
     item = Item.create(item_params)
     if item.save
-      render json: ItemSerializer.new(item), status: :created 
+      render json: ItemSerializer.new(item), status: :created
+    else
+      render status: :no_content
+    end
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      render json: ItemSerializer.new(item)
     else
       render status: 404
     end
