@@ -191,11 +191,11 @@
           null,
           null,
           1,
-          2,
+          3,
           1,
           1,
           null,
-          1,
+          2,
           null,
           null,
           null,
@@ -214,6 +214,17 @@
       },
       "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/jobs/application_job.rb": {
         "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/api/v1/search_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
           0,
           0
         ],
@@ -241,6 +252,6 @@
         }
       }
     },
-    "timestamp": 1666158075
+    "timestamp": 1666202101
   }
 }

@@ -45,4 +45,24 @@ describe "Merchants API" do
     expect(response.status).to eq(404)
   end
 
+  it 'returns one merchant based on a search' do
+    merchant1 = create(:merchant, name: "Home Depot")
+    merchant2 = create(:merchant, name: "Home Goods")
+    merchant3 = create(:merchant, name: "Google Home")
+    merchant4 = create(:merchant, name: "Jim Thome Stuff")
+    merchant5 = create(:merchant, name: "ZZZZZZ")
+
+    get "/api/v1/merchants/find?name=jim"
+     
+    expect(response).to be_successful
+    expect(response.status).to eq(200)
+
+    json_response = JSON.parse(response.body, symbolize_names: true)
+    merchant = json_response[:data]
+
+    expect(merchant).to be_an(Array)
+    expect(merchant).to have_key(:attributes)
+    expect(merchant[:attributes]).to have_key(:name)
+    expect(merchant[:attributes][:name]).to be_a(String)
+  end
 end

@@ -5,8 +5,8 @@ describe "Items-merchant API" do
     merchant = create(:merchant)
     item = create(:item, merchant: merchant)
 
-    # get api_v1_item_merchant_path(item)
-    get  "/api/v1/items/#{item.id}/merchant"
+    get api_v1_item_merchant_index_path(item)
+    # get  "/api/v1/items/#{item.id}/merchant"
 
     expect(response).to be_successful
     expect(response.status).to eq(200)
