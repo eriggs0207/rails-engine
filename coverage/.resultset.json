@@ -78,6 +78,36 @@
           null
         ]
       },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/api/v1/items_merchant_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/serializers/merchant_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
       "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/api/v1/items_controller.rb": {
         "lines": [
           1,
@@ -128,12 +158,6 @@
           null
         ]
       },
-      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/serializers/item_serializer.rb": {
         "lines": [
           1,
@@ -178,15 +202,6 @@
           null
         ]
       },
-      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/serializers/merchant_serializer.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null
-        ]
-      },
       "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/mailers/application_mailer.rb": {
         "lines": [
           0,
@@ -226,6 +241,6 @@
         }
       }
     },
-    "timestamp": 1666147346
+    "timestamp": 1666152041
   }
 }
