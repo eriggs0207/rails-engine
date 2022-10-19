@@ -9,8 +9,8 @@ class Api::V1::MerchantsController < ApplicationController
     if merchant.present?
       render json: MerchantSerializer.new(merchant)
     else
-      render status: :no_content
-    end 
+      render status: :not_found
+    end
   end
 
 end

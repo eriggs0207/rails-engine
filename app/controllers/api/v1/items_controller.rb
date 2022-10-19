@@ -9,7 +9,7 @@ class Api::V1::ItemsController < ApplicationController
     if item.present?
       render json: ItemSerializer.new(item)
     else
-      render status: :no_content
+      render status: :not_found
     end
   end
 
@@ -18,7 +18,7 @@ class Api::V1::ItemsController < ApplicationController
     if item.save
       render json: ItemSerializer.new(item), status: :created
     else
-      render status: :no_content
+      render status: :not_found
     end
   end
 
@@ -27,7 +27,14 @@ class Api::V1::ItemsController < ApplicationController
     if item.update(item_params)
       render json: ItemSerializer.new(item)
     else
-      render status: 404
+      render status: :not_found
+    end
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    if item.destroy
+      render status: :no_content
     end
   end
 

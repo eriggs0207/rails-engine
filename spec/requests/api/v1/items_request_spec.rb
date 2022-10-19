@@ -7,16 +7,20 @@ describe "Items API" do
     get api_v1_items_path
 
     expect(response).to be_successful
+    expect(response.status).to eq(200)
 
     items = JSON.parse(response.body, symbolize_names: true)
 
     expect(items[:data].count).to eq(10)
     expect(items[:data]).to be_an(Array)
-    expect(items[:data][0]).to have_key(:id)
-    expect(items[:data][3]).to have_key(:attributes)
-    expect(items[:data][2][:attributes][:name]).to be_a(String)
-    expect(items[:data][2][:attributes][:merchant_id]).to be_a(Integer)
-    expect(items[:data][2][:attributes][:unit_price]).to be_a(Float)
+
+    items[:data].each do |item|
+      expect(item).to have_key(:id)
+      expect(item).to have_key(:attributes)
+      expect(item[:attributes][:name]).to be_a(String)
+      expect(item[:attributes][:merchant_id]).to be_a(Integer)
+      expect(item[:attributes][:unit_price]).to be_a(Float)
+    end
   end
 
   it "can get one item by its id" do
@@ -71,5 +75,18 @@ describe "Items API" do
     expect(item.unit_price).to eq(45.99)
   end
 
+    it "can destroy an item" do
+    item = create(:item)
+
+    expect(Item.count).to eq(1)
+
+    delete "/api/v1/items/#{item.id}"
+
+    expect(response).to be_successful
+    expect(response.status).to eq(204)
+
+    expect(Item.count).to eq(0)
+    expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
+  end
 
 end
