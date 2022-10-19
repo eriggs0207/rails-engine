@@ -22,4 +22,13 @@ describe "Merchant-Items API" do
       expect(item[:attributes][:unit_price]).to be_a(Float)
     end
   end
+  it 'returns a no_content status for invalid id' do
+    merchant = create(:merchant)
+    items = create_list(:item, 10, merchant: merchant)
+
+    get "/api/v1/merchants/0/items"
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+  end
 end
