@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-10-18T20:12:14-06:00">2022-10-18T20:12:14-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-10-18T20:42:26-06:00">2022-10-18T20:42:26-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  78.65%
+  79.57%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.8
+         0.81
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>89</b> relevant lines,
-    <span class="green"><b>70</b> lines covered</span> and
+    <b>93</b> relevant lines,
+    <span class="green"><b>74</b> lines covered</span> and
     <span class="red"><b>19</b> lines missed. </span>
     (<span class="red">
-  78.65%
+  79.57%
 </span>
 )
   </div>
@@ -94,12 +94,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#9372be5a37230c3754c4479deecfcf799dad46ec" class="src_link" title="app/controllers/api/v1/items_controller.rb">app/controllers/api/v1/items_controller.rb</a></td>
-            <td class="yellow strong cell--number t-file__coverage">85.71 %</td>
-            <td class="cell--number">39</td>
-            <td class="cell--number">21</td>
-            <td class="cell--number">18</td>
+            <td class="yellow strong cell--number t-file__coverage">88.00 %</td>
+            <td class="cell--number">46</td>
+            <td class="cell--number">25</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">3</td>
-            <td class="cell--number">0.90</td>
+            <td class="cell--number">0.92</td>
             
           </tr>
         
@@ -269,14 +269,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="yellow">
-  86.11%
+  87.5%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.89
+         0.9
        </span>
     </span> hits/line
     )
@@ -289,11 +289,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>36</b> relevant lines,
-    <span class="green"><b>31</b> lines covered</span> and
+    <b>40</b> relevant lines,
+    <span class="green"><b>35</b> lines covered</span> and
     <span class="red"><b>5</b> lines missed. </span>
     (<span class="yellow">
-  86.11%
+  87.5%
 </span>
 )
   </div>
@@ -318,12 +318,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#9372be5a37230c3754c4479deecfcf799dad46ec" class="src_link" title="app/controllers/api/v1/items_controller.rb">app/controllers/api/v1/items_controller.rb</a></td>
-            <td class="yellow strong cell--number t-file__coverage">85.71 %</td>
-            <td class="cell--number">39</td>
-            <td class="cell--number">21</td>
-            <td class="cell--number">18</td>
+            <td class="yellow strong cell--number t-file__coverage">88.00 %</td>
+            <td class="cell--number">46</td>
+            <td class="cell--number">25</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">3</td>
-            <td class="cell--number">0.90</td>
+            <td class="cell--number">0.92</td>
             
           </tr>
         
@@ -1080,7 +1080,7 @@
     <h3>app/controllers/api/v1/items_controller.rb</h3>
     <h4>
       <span class="yellow">
-  85.71%
+  88.0%
 </span>
 
       lines covered
@@ -1089,8 +1089,8 @@
     
 
     <div class="t-line-summary">
-      <b>21</b> relevant lines.
-      <span class="green"><b>18</b> lines covered</span> and
+      <b>25</b> relevant lines.
+      <span class="green"><b>22</b> lines covered</span> and
       <span class="red"><b>3</b> lines missed.</span>
     </div>
 
@@ -1229,7 +1229,7 @@
 
             
 
-            <code class="ruby">      render status: :no_content</code>
+            <code class="ruby">      render status: :not_found</code>
           </li>
         </div>
       
@@ -1328,7 +1328,7 @@
 
             
 
-            <code class="ruby">      render status: :no_content</code>
+            <code class="ruby">      render status: :not_found</code>
           </li>
         </div>
       
@@ -1427,7 +1427,7 @@
 
             
 
-            <code class="ruby">      render status: 404</code>
+            <code class="ruby">      render status: :not_found</code>
           </li>
         </div>
       
@@ -1471,18 +1471,18 @@
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">  def destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="35">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    item = Item.find(params[:id])</code>
           </li>
         </div>
       
@@ -1493,18 +1493,18 @@
 
             
 
-            <code class="ruby">  def item_params</code>
+            <code class="ruby">    if item.destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="37">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="37">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    params.require(:item).permit(:name,:description,:unit_price,:merchant_id)</code>
+            <code class="ruby">      render status: :no_content</code>
           </li>
         </div>
       
@@ -1515,12 +1515,89 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="39">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="40">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="41">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="43">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def item_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="44">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    params.require(:item).permit(:name,:description,:unit_price,:merchant_id)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="45">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
             
             
 
@@ -1645,7 +1722,7 @@
 
             
 
-            <code class="ruby">      render status: :no_content</code>
+            <code class="ruby">      render status: :not_found</code>
           </li>
         </div>
       
@@ -1656,7 +1733,7 @@
 
             
 
-            <code class="ruby">    end </code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1841,7 +1918,7 @@
 
             
 
-            <code class="ruby">      render status: :no_content</code>
+            <code class="ruby">      render status: :not_found</code>
           </li>
         </div>
       
@@ -1852,7 +1929,7 @@
 
             
 
-            <code class="ruby">    end </code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
