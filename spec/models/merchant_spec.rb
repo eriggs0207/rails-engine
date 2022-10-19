@@ -9,4 +9,16 @@ RSpec.describe Merchant, type: :model do
     it { should have_many(:invoices) }
     it { should have_many(:customers).through(:invoices) }
   end
-end 
+
+  describe 'class methods' do
+    describe '#merchant_search' do
+      it 'returns the first merchant based on keywords' do
+        merchant1 = create(:merchant, name: "Great Merchant")
+        merchant2 = create(:merchant, name: "Greater Merchant")
+        merchant3 = create(:merchant, name: "Greatest Merchant")
+
+        expect(Merchant.merchant_search("gReatEst")).to eq(merchant3)
+      end
+    end
+  end
+end

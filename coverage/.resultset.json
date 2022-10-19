@@ -10,6 +10,11 @@
           1,
           1,
           null,
+          1,
+          2,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -202,6 +207,21 @@
           null
         ]
       },
+      "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/controllers/api/v1/search_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/erikriggs/turing_work/3mod/projects/rails-engine/app/mailers/application_mailer.rb": {
         "lines": [
           0,
@@ -241,6 +261,6 @@
         }
       }
     },
-    "timestamp": 1666158075
+    "timestamp": 1666204805
   }
 }
