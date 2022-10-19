@@ -39,6 +39,15 @@ describe "Items API" do
     expect(item[:data][:attributes][:unit_price]).to be_a(Float)
   end
 
+  it 'returns a no_content status for invalid id' do
+    item = create(:item)
+
+    get "/api/v1/items/0"
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+  end
+
   it "can create a new item" do
     merchant = create(:merchant)
     item_params = ({
@@ -60,6 +69,22 @@ describe "Items API" do
     expect(created_item.merchant_id).to eq(item_params[:merchant_id])
   end
 
+  it "will return no_content status with incomplete item attributes" do
+    merchant = create(:merchant)
+    item_params = ({
+                    name: 'Chair',
+                    description: 'It is a chair',
+                    merchant_id: merchant.id
+
+                  })
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post "/api/v1/items", headers: headers, params: JSON.generate(item: item_params)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+  end
+
   it "can update an existing item" do
     id = create(:item).id
     previous_price = Item.last.unit_price
@@ -73,6 +98,20 @@ describe "Items API" do
     expect(response).to be_successful
     expect(item.unit_price).to_not eq(previous_price)
     expect(item.unit_price).to eq(45.99)
+  end
+
+  it "will return no_content status with incorrect id" do
+    id = create(:item).id
+    previous_price = Item.last.unit_price
+    item_params = { unit_price: 45.99, merchant_id: 0 }
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    # We include this header to make sure that these params are passed as JSON rather than as plain text
+    patch "/api/v1/items/#{id}", headers: headers, params: JSON.generate({item: item_params})
+    item = Item.find_by(id: id)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
   end
 
     it "can destroy an item" do

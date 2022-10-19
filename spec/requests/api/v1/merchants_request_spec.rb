@@ -35,4 +35,14 @@ describe "Merchants API" do
     expect(merchant[:data]).to have_key(:attributes)
     expect(merchant[:data][:attributes][:name]).to be_a(String)
   end
+
+  it 'returns a no_content status for invalid id' do
+    merchant = create(:merchant)
+
+    get "/api/v1/merchants/0"
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+  end
+
 end
