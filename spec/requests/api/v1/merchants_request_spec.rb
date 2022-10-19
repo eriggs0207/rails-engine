@@ -7,14 +7,18 @@ describe "Merchants API" do
     get api_v1_merchants_path
 
     expect(response).to be_successful
+    expect(response.status).to eq(200)
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
     expect(merchants[:data].count).to eq(10)
     expect(merchants[:data]).to be_an(Array)
-    expect(merchants[:data][0]).to have_key(:id)
-    expect(merchants[:data][3]).to have_key(:attributes)
-    expect(merchants[:data][2][:attributes][:name]).to be_a(String)
+
+    merchants[:data].each do |merchant|
+      expect(merchant).to have_key(:id)
+      expect(merchant).to have_key(:attributes)
+      expect(merchant[:attributes][:name]).to be_a(String)
+    end
   end
 
   it "can get one merchant by its id" do
@@ -23,6 +27,7 @@ describe "Merchants API" do
     get api_v1_merchant_path(merchant)
 
     expect(response).to be_successful
+    expect(response.status).to eq(200)
 
     merchant = JSON.parse(response.body, symbolize_names: true)
 
