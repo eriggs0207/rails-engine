@@ -59,7 +59,7 @@ RSpec.describe Item, type: :model do
         item3 = create(:item, unit_price: 1000.10)
         item4 = create(:item, unit_price: 11.11)
 
-        expect(Item.items_search_by_range(9, 12)).to eq([item1, item2, item4])
+        expect(Item.items_search_by_range(12, 9)).to eq([item1, item2, item4])
       end
     end
   end
