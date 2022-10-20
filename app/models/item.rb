@@ -10,4 +10,8 @@ class Item < ApplicationRecord
     where("name ILIKE ?", "%#{item_term}%")
     .order(name: :desc)
   end
+
+  def self.items_search_by_min(item_min)
+    where("unit_price >= ?", item_min)
+  end
 end

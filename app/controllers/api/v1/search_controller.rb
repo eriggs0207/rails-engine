@@ -1,18 +1,18 @@
 class Api::V1::SearchController < ApplicationController
 
   def find
-    merchant = Merchant.merchant_search(params[:name])
-    if merchant != nil
-      render json: MerchantSerializer.new(merchant)
+    if params[:name]
+      render json: MerchantSerializer.new(Merchant.merchant_search(params[:name]))
     else
       render status: :not_found
     end
   end
 
   def find_all
-    items = Item.items_search_by_name(params[:name])
-    if items != nil
-      render json: ItemSerializer.new(items)
+    if params[:name]
+      render json: ItemSerializer.new(Item.items_search_by_name(params[:name]))
+    elsif params[:min_price]
+      render json: ItemSerializer.new(Item.items_search_by_min(params[:min_price]))
     else
       render status: :not_found
     end

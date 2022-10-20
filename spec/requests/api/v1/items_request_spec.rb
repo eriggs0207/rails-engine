@@ -147,5 +147,25 @@ describe "Items API" do
       expect(items).to be_an(Array)
       expect(items.count).to eq(3)
     end
+
+
+    it 'returns items based on a min unit price' do
+      # merchant = create(:merchant)
+      item1 = create(:item, unit_price: 9.99)
+      item2 = create(:item, unit_price: 10.01)
+      item3 = create(:item, unit_price: 1000.10)
+      item4 = create(:item, unit_price: 11.11)
+
+      get "/api/v1/items/find_all?min_price=10.02"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      json_response = JSON.parse(response.body, symbolize_names: true)
+      items = json_response[:data]
+
+      expect(items).to be_an(Array)
+      expect(items.count).to eq(2)
+    end
   end
 end

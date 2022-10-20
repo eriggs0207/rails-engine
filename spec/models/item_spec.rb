@@ -17,13 +17,25 @@ RSpec.describe Item, type: :model do
   describe 'class methods' do
     describe '#items_search_by_name' do
       it 'returns items based on keywords' do
-        merchant = create(:merchant)
-        item1 = create(:item, name: "brine", merchant: merchant)
-        item2 = create(:item, name: "ring", merchant: merchant)
-        item3 = create(:item, name: "grinder", merchant: merchant)
-        item4 = create(:item, name: "ZZZZZZZZ", merchant: merchant)
+
+        item1 = create(:item, name: "brine")
+        item2 = create(:item, name: "ring")
+        item3 = create(:item, name: "grinder")
+        item4 = create(:item, name: "ZZZZZZZZ")
 
         expect(Item.items_search_by_name("riN")).to eq([item2, item3, item1])
+      end
+    end
+
+    describe '#items_search_by_min' do
+      it 'returns items based on a min unit_price' do
+
+        item1 = create(:item, unit_price: 9.99)
+        item2 = create(:item, unit_price: 10.02)
+        item3 = create(:item, unit_price: 1000.10)
+        item4 = create(:item, unit_price: 11.11)
+
+        expect(Item.items_search_by_min(10.01)).to eq([item2, item3, item4])
       end
     end
   end
