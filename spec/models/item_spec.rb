@@ -38,5 +38,17 @@ RSpec.describe Item, type: :model do
         expect(Item.items_search_by_min(10.01)).to eq([item2, item3, item4])
       end
     end
+
+    describe '#items_search_by_max' do
+      it 'returns items based on a max unit_price' do
+
+        item1 = create(:item, unit_price: 9.99)
+        item2 = create(:item, unit_price: 10.02)
+        item3 = create(:item, unit_price: 1000.10)
+        item4 = create(:item, unit_price: 11.11)
+
+        expect(Item.items_search_by_max(12.01)).to eq([item1, item2, item4])
+      end
+    end
   end
 end
