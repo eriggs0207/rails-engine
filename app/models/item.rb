@@ -6,4 +6,7 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
 
-end 
+  def self.items_search_by_name(item_term)
+    where("name ILIKE ?", "%#{item_term}%")
+  end
+end

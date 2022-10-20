@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-10-19T12:40:05-06:00">2022-10-19T12:40:05-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-10-19T17:49:41-06:00">2022-10-19T17:49:41-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,7 +23,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="yellow">
-  85.98%
+  86.24%
 </span>
 
      </span>
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>107</b> relevant lines,
-    <span class="green"><b>92</b> lines covered</span> and
+    <b>109</b> relevant lines,
+    <span class="green"><b>94</b> lines covered</span> and
     <span class="red"><b>15</b> lines missed. </span>
     (<span class="yellow">
-  85.98%
+  86.24%
 </span>
 )
   </div>
@@ -227,9 +227,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#93d37523563a25499bef047d5cedaf4deb981445" class="src_link" title="app/models/item.rb">app/models/item.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">9</td>
-            <td class="cell--number">6</td>
-            <td class="cell--number">6</td>
+            <td class="cell--number">12</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">8</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -515,8 +515,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>35</b> relevant lines,
-    <span class="green"><b>35</b> lines covered</span> and
+    <b>37</b> relevant lines,
+    <span class="green"><b>37</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -589,9 +589,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#93d37523563a25499bef047d5cedaf4deb981445" class="src_link" title="app/models/item.rb">app/models/item.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">9</td>
-            <td class="cell--number">6</td>
-            <td class="cell--number">6</td>
+            <td class="cell--number">12</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">8</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -1350,7 +1350,7 @@
 
             
 
-            <code class="ruby">      render json: ItemSerializer.new(item), status: 201</code>
+            <code class="ruby">      render json: ItemSerializer.new(item), status: :created</code>
           </li>
         </div>
       
@@ -2935,8 +2935,8 @@
     
 
     <div class="t-line-summary">
-      <b>6</b> relevant lines.
-      <span class="green"><b>6</b> lines covered</span> and
+      <b>8</b> relevant lines.
+      <span class="green"><b>8</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -3036,13 +3036,46 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="9">
+          <li class="covered" data-hits="1" data-linenumber="9">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def self.items_search_by_name(item_term)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="10">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    where(&quot;name ILIKE ?&quot;, &quot;%#{item_term}%&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
             
             
 
             
 
-            <code class="ruby">end </code>
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
           </li>
         </div>
       
