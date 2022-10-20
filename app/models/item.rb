@@ -18,4 +18,8 @@ class Item < ApplicationRecord
   def self.items_search_by_max(item_max)
     where("unit_price <= ?", item_max)
   end
+
+  def self.items_search_by_range(min, max)
+    where("unit_price BETWEEN ? AND ?", min, max)
+  end
 end
