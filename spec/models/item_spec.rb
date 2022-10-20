@@ -18,12 +18,12 @@ RSpec.describe Item, type: :model do
     describe '#items_search_by_name' do
       it 'returns items based on keywords' do
         merchant = create(:merchant)
-        item2 = create(:item, name: "Greater Item", merchant: merchant)
-        item1 = create(:item, name: "Great Item", merchant: merchant)
-        item3 = create(:item, name: "Greatest Item", merchant: merchant)
+        item1 = create(:item, name: "brine", merchant: merchant)
+        item2 = create(:item, name: "ring", merchant: merchant)
+        item3 = create(:item, name: "grinder", merchant: merchant)
         item4 = create(:item, name: "ZZZZZZZZ", merchant: merchant)
 
-        expect(Item.items_search_by_name("gReat")).to eq([item2, item1, item3])
+        expect(Item.items_search_by_name("riN")).to eq([item2, item3, item1])
       end
     end
   end

@@ -8,4 +8,13 @@ class Api::V1::SearchController < ApplicationController
       render status: :not_found
     end
   end
+
+  def find_all
+    items = Item.items_search_by_name(params[:name])
+    if items != nil
+      render json: ItemSerializer.new(items)
+    else
+      render status: :not_found
+    end
+  end
 end

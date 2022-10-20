@@ -128,4 +128,24 @@ describe "Items API" do
     expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
 
+  describe 'search for all items' do
+    it 'returns items based on a name search' do
+      # merchant = create(:merchant)
+      item1 = create(:item, name: "ring")
+      item2 = create(:item, name: "ball bearing")
+      item3 = create(:item, name: "earing")
+      item4 = create(:item, name: "eeeeeee")
+
+      get "/api/v1/items/find_all?name=ring"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      json_response = JSON.parse(response.body, symbolize_names: true)
+      items = json_response[:data]
+
+      expect(items).to be_an(Array)
+      expect(items.count).to eq(3)
+    end
+  end
 end

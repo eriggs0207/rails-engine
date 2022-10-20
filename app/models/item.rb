@@ -8,5 +8,6 @@ class Item < ApplicationRecord
 
   def self.items_search_by_name(item_term)
     where("name ILIKE ?", "%#{item_term}%")
+    .order(name: :desc)
   end
 end
