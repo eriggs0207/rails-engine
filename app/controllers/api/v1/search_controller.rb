@@ -40,10 +40,3 @@ class Api::V1::SearchController < ApplicationController
     end
   end
 end
-
-# elsif params[:max_price] && params[:min_price] && params[:name]
-#   render json: { data: {message: 'cannot send both name and min_price and max_price'}}, status: 400
-# elsif params[:min_price] && params[:name]
-#   render json: { data: {message: 'cannot send both name and min_price'}}, status: 400
-# elsif params[:max_price] && params[:name]
-#   render json: { data: {message: 'cannot send both name and max_price'}}, status: 400

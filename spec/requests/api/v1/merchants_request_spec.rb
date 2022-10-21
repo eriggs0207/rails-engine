@@ -81,7 +81,7 @@ describe "Merchants API" do
       expect(response.status).to eq(400)
     end
 
-    it 'returns a 400 when nothing is entered searched' do
+    it 'returns a 400 when nothing is entered' do
 
       merchant1 = create(:merchant, name: "Home Depot")
       merchant2 = create(:merchant, name: "Home Goods")
@@ -93,6 +93,26 @@ describe "Merchants API" do
 
       expect(response).to_not be_successful
       expect(response.status).to eq(400)
+    end
+
+    it 'returns {} when no merchant matches the search' do
+
+      merchant1 = create(:merchant, name: "Home Depot")
+      merchant2 = create(:merchant, name: "Home Goods")
+      merchant3 = create(:merchant, name: "Google Home")
+      merchant4 = create(:merchant, name: "Jim Thome Stuff")
+      merchant5 = create(:merchant, name: "ZZZZZZ")
+
+      get "/api/v1/merchants/find?name=a"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      json_response = JSON.parse(response.body, symbolize_names: true)
+      no_match = json_response[:data]
+
+      expect(no_match).to be_a(Hash)
+      expect(no_match.empty?).to be(true)
     end
   end
 end
