@@ -126,6 +126,33 @@ describe "Items API" do
     expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
 
+  # it 'will delete all invoices for that item' do
+  #   merchant = create(:merchant)
+  #   customer = create(:customer)
+  #   item1 = create(:item, merchant: merchant)
+  #   item2 = create(:item, merchant: merchant)
+  #   invoice1 = create(:invoice, customer: customer, merchant: merchant)
+  #   invoice2 = create(:invoice, customer: customer, merchant: merchant)
+  #   invoice3 = create(:invoice, customer: customer, merchant: merchant)
+  #   invoice4 = create(:invoice, customer: customer, merchant: merchant)
+  #   create(:invoice_items, item_id: item1.id, invoice_id: invoice1.id)
+  #   create(:invoice_items, item_id: item1.id, invoice_id: invoice2.id)
+  #   create(:invoice_items, item_id: item2.id, invoice_id: invoice3.id)
+  #   create(:invoice_items, item_id: item1.id, invoice_id: invoice4.id)
+  #
+  #   delete "/api/v1/items/#{item1.id}"
+  #
+  #   expect(response).to be_successful
+  #   expect(response.status).to eq(204)
+  #
+  #   expect(Item.exists?(item1.id)).to be(false)
+  #   expect(Item.exists?(item2.id)).to be(true)
+  #   expect(Invoice.exists?(invoice1.id)).to be(false)
+  #   expect(Invoice.exists?(invoice2.id)).to be(false)
+  #   expect(Invoice.exists?(invoice3.id)).to be(true)
+  #   expect(Invoice.exists?(invoice4.id)).to be(false)
+  # end
+
   describe 'search for all items' do
     it 'returns items based on a name search' do
       item1 = create(:item, name: "ring")

@@ -73,11 +73,13 @@ RSpec.describe Item, type: :model do
         invoice1 = create(:invoice, customer: customer, merchant: merchant)
         invoice2 = create(:invoice, customer: customer, merchant: merchant)
         invoice3 = create(:invoice, customer: customer, merchant: merchant)
+        invoice4 = create(:invoice, customer: customer, merchant: merchant)
         create(:invoice_items, item_id: item1.id, invoice_id: invoice1.id)
         create(:invoice_items, item_id: item1.id, invoice_id: invoice2.id)
         create(:invoice_items, item_id: item2.id, invoice_id: invoice3.id)
+        create(:invoice_items, item_id: item1.id, invoice_id: invoice4.id)
 
-        expect(item1.invoices_by_item).to eq([invoice1, invoice2])
+        expect(item1.invoices_by_item).to eq([invoice1, invoice2, invoice4])
       end
     end
   end
