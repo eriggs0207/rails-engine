@@ -91,7 +91,6 @@ describe "Items API" do
     item_params = { unit_price: 45.99 }
     headers = {"CONTENT_TYPE" => "application/json"}
 
-    # We include this header to make sure that these params are passed as JSON rather than as plain text
     patch "/api/v1/items/#{id}", headers: headers, params: JSON.generate({item: item_params})
     item = Item.find_by(id: id)
 
@@ -106,7 +105,6 @@ describe "Items API" do
     item_params = { unit_price: 45.99, merchant_id: 0 }
     headers = {"CONTENT_TYPE" => "application/json"}
 
-    # We include this header to make sure that these params are passed as JSON rather than as plain text
     patch "/api/v1/items/#{id}", headers: headers, params: JSON.generate({item: item_params})
     item = Item.find_by(id: id)
 
@@ -130,7 +128,6 @@ describe "Items API" do
 
   describe 'search for all items' do
     it 'returns items based on a name search' do
-      # merchant = create(:merchant)
       item1 = create(:item, name: "ring")
       item2 = create(:item, name: "ball bearing")
       item3 = create(:item, name: "earing")
@@ -150,7 +147,6 @@ describe "Items API" do
 
 
     it 'returns items based on a min unit price search' do
-      # merchant = create(:merchant)
       item1 = create(:item, unit_price: 9.99)
       item2 = create(:item, unit_price: 10.01)
       item3 = create(:item, unit_price: 1000.10)
@@ -204,6 +200,80 @@ describe "Items API" do
 
       expect(items).to be_an(Array)
       expect(items.count).to eq(2)
+    end
+  end
+
+  describe "sad path search results" do
+    it 'returns 400 when min price, max price, and name are entered as a search' do
+      item1 = create(:item, unit_price: 9.99, name: "ring")
+      item2 = create(:item, unit_price: 10.02, name: "bring")
+      item3 = create(:item, unit_price: 1000.10, name: "ringer")
+      item4 = create(:item, unit_price: 11.11, name: "zzzz")
+
+      get "/api/v1/items/find_all?max_price=12&min_price=10&name=ring"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+    end
+
+    it 'returns 400 when max price and name are entered as a search' do
+      item1 = create(:item, unit_price: 9.99, name: "ring")
+      item2 = create(:item, unit_price: 10.02, name: "bring")
+      item3 = create(:item, unit_price: 1000.10, name: "ringer")
+      item4 = create(:item, unit_price: 11.11, name: "zzzz")
+
+      get "/api/v1/items/find_all?max_price=12&name=ring"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+    end
+
+    it 'returns 400 when min price and name are entered as a search' do
+      item1 = create(:item, unit_price: 9.99, name: "ring")
+      item2 = create(:item, unit_price: 10.02, name: "bring")
+      item3 = create(:item, unit_price: 1000.10, name: "ringer")
+      item4 = create(:item, unit_price: 11.11, name: "zzzz")
+
+      get "/api/v1/items/find_all?min_price=12&name=ring"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+    end
+
+    it 'returns 400 when min price is entered less than 0' do
+      item1 = create(:item, unit_price: 9.99, name: "ring")
+      item2 = create(:item, unit_price: 10.02, name: "bring")
+      item3 = create(:item, unit_price: 1000.10, name: "ringer")
+      item4 = create(:item, unit_price: 11.11, name: "zzzz")
+
+      get "/api/v1/items/find_all?min_price=-1"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+    end
+
+    it 'returns 400 when items_search_by_max price is entered less than 0' do
+      item1 = create(:item, unit_price: 9.99, name: "ring")
+      item2 = create(:item, unit_price: 10.02, name: "bring")
+      item3 = create(:item, unit_price: 1000.10, name: "ringer")
+      item4 = create(:item, unit_price: 11.11, name: "zzzz")
+
+      get "/api/v1/items/find_all?max_price=-5"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+    end
+
+    it 'returns 400 when min_price is larger than max_price' do
+      item1 = create(:item, unit_price: 9.99, name: "ring")
+      item2 = create(:item, unit_price: 10.02, name: "bring")
+      item3 = create(:item, unit_price: 1000.10, name: "ringer")
+      item4 = create(:item, unit_price: 11.11, name: "zzzz")
+
+      get "/api/v1/items/find_all?max_price=-5"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
     end
   end
 end
