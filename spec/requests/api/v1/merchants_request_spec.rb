@@ -65,4 +65,34 @@ describe "Merchants API" do
     expect(merchant[:attributes]).to have_key(:name)
     expect(merchant[:attributes][:name]).to be_a(String)
   end
+
+  describe "sad paths for search" do
+    it 'returns a 400 when an empty string is searched' do
+
+      merchant1 = create(:merchant, name: "Home Depot")
+      merchant2 = create(:merchant, name: "Home Goods")
+      merchant3 = create(:merchant, name: "Google Home")
+      merchant4 = create(:merchant, name: "Jim Thome Stuff")
+      merchant5 = create(:merchant, name: "ZZZZZZ")
+
+      get "/api/v1/merchants/find?name="
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+    end
+
+    it 'returns a 400 when nothing is entered searched' do
+
+      merchant1 = create(:merchant, name: "Home Depot")
+      merchant2 = create(:merchant, name: "Home Goods")
+      merchant3 = create(:merchant, name: "Google Home")
+      merchant4 = create(:merchant, name: "Jim Thome Stuff")
+      merchant5 = create(:merchant, name: "ZZZZZZ")
+
+      get "/api/v1/merchants/find?"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+    end
+  end
 end
