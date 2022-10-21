@@ -63,4 +63,22 @@ RSpec.describe Item, type: :model do
       end
     end
   end
+  describe 'instance methods' do
+    describe '#invoices_by_item' do
+      it 'returns invoices by item' do
+        merchant = create(:merchant)
+        customer = create(:customer)
+        item1 = create(:item, merchant: merchant)
+        item2 = create(:item, merchant: merchant)
+        invoice1 = create(:invoice, customer: customer, merchant: merchant)
+        invoice2 = create(:invoice, customer: customer, merchant: merchant)
+        invoice3 = create(:invoice, customer: customer, merchant: merchant)
+        create(:invoice_items, item_id: item1.id, invoice_id: invoice1.id)
+        create(:invoice_items, item_id: item1.id, invoice_id: invoice2.id)
+        create(:invoice_items, item_id: item2.id, invoice_id: invoice3.id)
+
+        expect(item1.invoices_by_item).to eq([invoice1, invoice2])
+      end
+    end
+  end
 end

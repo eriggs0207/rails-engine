@@ -6,6 +6,10 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
 
+  def invoices_by_item
+    invoices.group(:id).distinct.sort
+  end
+
   def self.items_search_by_name(item_term)
     where("name ILIKE ?", "%#{item_term}%")
     .order(name: :desc)

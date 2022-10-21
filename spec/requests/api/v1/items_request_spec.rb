@@ -210,7 +210,7 @@ describe "Items API" do
       item3 = create(:item, unit_price: 1000.10, name: "ringer")
       item4 = create(:item, unit_price: 11.11, name: "zzzz")
 
-      get "/api/v1/items/find_all?max_price=12&min_price=10&name=ring"
+      get "/api/v1/items/find_all?name=ring&max_price=12&min_price=10"
 
       expect(response).to_not be_successful
       expect(response.status).to eq(400)
@@ -270,7 +270,7 @@ describe "Items API" do
       item3 = create(:item, unit_price: 1000.10, name: "ringer")
       item4 = create(:item, unit_price: 11.11, name: "zzzz")
 
-      get "/api/v1/items/find_all?max_price=-5"
+      get "/api/v1/items/find_all?max_price=1&min_price=10"
 
       expect(response).to_not be_successful
       expect(response.status).to eq(400)
